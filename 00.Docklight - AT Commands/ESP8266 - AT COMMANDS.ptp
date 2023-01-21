@@ -1,0 +1,724 @@
+VERSION
+8
+
+COMMSETTINGS
+0
+COM6
+COM2
+115200
+2
+63
+4
+2
+0
+
+COMMDISPLAY
+0
+
+VERSATAP
+0
+
+CHANNELALIAS
+
+
+
+SEND
+0
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+0
+5
+
+SEND
+1
+> BASIC
+
+0
+5
+
+SEND
+2
+  - Test if AT system works correctly {AT}
+41 54 0D 0A
+0
+5
+
+SEND
+3
+  - Print firmware version {AT+GMR}
+41 54 2B 47 4D 52 0D 0A
+0
+5
+
+SEND
+4
+  - Reset the module {AT+RST}
+41 54 2B 52 53 54 0D 0A
+0
+5
+
+SEND
+5
+  - Disable echo (doesn’t send back received command) {ATE0}
+41 54 45 30 0D 0A
+0
+5
+
+SEND
+6
+  - Enable echo (sends back received command before response) {ATE1}
+41 54 45 31 0D 0A
+0
+5
+
+SEND
+7
+  - Enter deep sleep mode for time milliseconds (5000ms) {AT+GSLP=time}
+54 2B 47 53 4C 50 3D 35 30 30 30 0D 0A
+0
+5
+
+SEND
+8
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+0
+5
+
+SEND
+9
+> OPERATION MODE
+
+0
+5
+
+SEND
+10
+  - List valid modes {AT+CWMODE=?}
+41 54 2B 43 57 4D 4F 44 45 3D 3F 0D 0A
+0
+5
+
+SEND
+11
+  - Query AP’s info which is connect by ESP8266 {AT+CWMODE?}
+41 54 2B 43 57 4D 4F 44 45 3F 0D 0A
+0
+5
+
+SEND
+12
+.
+
+0
+5
+
+SEND
+13
+  - Set AP’s info which will be connect by ESP8266 {AT+CWMODE=mode}
+
+0
+5
+
+SEND
+14
+      Parameters:
+
+0
+5
+
+SEND
+15
+       mode: 1-3 (1: client; 2: host; 3: host+ client)
+20 20 20 20 20 20
+0
+5
+
+SEND
+16
+         - Set Station mode (1: client)
+41 54 2B 43 57 4D 4F 44 45 3D 31 0D 0A
+0
+5
+
+SEND
+17
+         - Set AP mode (2: host)
+41 54 2B 43 57 4D 4F 44 45 3D 32 0D 0A
+0
+5
+
+SEND
+18
+         - Set AP + Station mode (3: host + client)
+41 54 2B 43 57 4D 4F 44 45 3D 33 0D 0A
+0
+5
+
+SEND
+19
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+0
+5
+
+SEND
+20
+> TRANSFER MODE
+
+0
+5
+
+SEND
+21
+  - Query transfer mode {AT+CIPMODE?}
+41 54 2B 43 49 50 4D 4F 44 45 3F 0D 0A
+0
+5
+
+SEND
+22
+.
+
+0
+5
+
+SEND
+23
+  - Set transfer mode {AT+CIPMODE=mode}
+
+0
+5
+
+SEND
+24
+      Parameters:
+
+0
+5
+
+SEND
+25
+       mode: 0-1 (0: normal; 1: unvarnished)
+
+0
+5
+
+SEND
+26
+          - Set normal (0: normal)
+41 54 2B 43 49 50 4D 4F 44 45 3D 30 0D 0A
+0
+5
+
+SEND
+27
+          - Set unvarnished (1: unvarnished)
+41 54 2B 43 49 50 4D 4F 44 45 3D 31 0D 0A
+0
+5
+
+SEND
+28
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+0
+5
+
+SEND
+29
+> WIFI
+
+0
+5
+
+SEND
+30
+  - Get local IP address {AT+CIFSR}
+41 54 2B 43 49 46 53 52 0D 0A
+0
+5
+
+SEND
+31
+.
+
+0
+5
+
+SEND
+32
+  - Enable or Disable DHCP {AT+CWDHCP=mode,en}
+
+0
+5
+
+SEND
+33
+      Parameters:
+
+0
+5
+
+SEND
+34
+       mode: 0-2 (0: set ESP8266 as a softAP; 1: set ESP8266 as a station; 2: set both ESP8266 to both softAP and a station)
+
+0
+5
+
+SEND
+35
+       en: (0: Enable DHCP; 1: Disable DHCP)
+
+0
+5
+
+SEND
+36
+         - Enable DHCP
+41 54 2B 43 57 44 48 43 50 3D 32 2C 31 0D 0A
+0
+5
+
+SEND
+37
+         - Disable DCHP
+41 54 2B 43 57 44 48 43 50 3D 32 2C 30 0D 0A
+0
+5
+
+SEND
+38
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+0
+5
+
+SEND
+39
+> CLIENT (mode: Station)
+
+0
+5
+
+SEND
+40
+  - Lists available Access Points {AT+CWLAP}
+41 54 2B 43 57 4C 41 50 0D 0A
+0
+5
+
+SEND
+41
+.
+
+0
+5
+
+SEND
+42
+  - Connect ESP8266 to a SSID with supplied password {AT+CWJAP=ssid,pwd}
+
+0
+5
+
+SEND
+43
+      Parameters:
+
+0
+5
+
+SEND
+44
+       ssid: String, AP’s SSID
+
+0
+5
+
+SEND
+45
+       pwd: String, not longer than 64 characters
+
+0
+5
+
+SEND
+46
+       
+41 54 2B 43 57 4A 41 50 3D 22 44 46 50 5F 32 2E 34 47 48 7A 22 2C 22 64 61 6E 69 65 6C 32 30 31 35 22 0D 0A
+0
+5
+
+SEND
+47
+.
+
+0
+5
+
+SEND
+48
+  - Get information about connection {AT+CIPSTATUS} 2: Got IP, 3: Connected, 4: Disconnected
+41 54 2B 43 49 50 53 54 41 54 55 53 0D 0A
+0
+5
+
+SEND
+49
+  - Prints the SSID of Access Point ESP8266 is connected to {AT+CWJAP?}
+41 54 2B 43 57 4A 41 50 3F 0D 0A
+0
+5
+
+SEND
+50
+  - Get IP address of ESP8266 station {AT+CIPSTA?}
+41 54 2B 43 49 50 53 54 41 3F 0D 0A
+0
+5
+
+SEND
+51
+  - Set ip addr of ESP8266 station {AT+CIPSTA=ip}
+41 54 2B 43 49 50 53 54 41 3D 31 39 32 2E 31 36 38 2E 31 2E 31 31 30 0D 0A
+0
+5
+
+SEND
+52
+  - Disconnect ESP8266 from the AP is currently connected to {AT+CWQAP}
+41 54 2B 43 57 51 41 50 0D 0A
+0
+5
+
+SEND
+53
+.
+
+0
+5
+
+SEND
+54
+  - Establish TCP connection or register UDP port and start a connection
+
+0
+5
+
+SEND
+55
+      Parameters:
+
+0
+5
+
+SEND
+56
+       id: 0-4, id of connection
+
+0
+5
+
+SEND
+57
+       type: String, “TCP” or “UDP”
+
+0
+5
+
+SEND
+58
+       addr: String, remote IP
+
+0
+5
+
+SEND
+59
+       port: String, remote port
+
+0
+5
+
+SEND
+60
+         - List possible command variations
+41 54 2B 43 49 50 53 54 41 52 54 3D 3F 0D 0A
+0
+5
+
+SEND
+61
+         - Start a connection as client (Single connection mode)
+41 54 2B 43 49 50 53 54 41 52 54 3D 74 79 70 65 2C 61 64 64 72 2C 70 6F 72 74
+0
+5
+
+SEND
+62
+
+41 54 2B 43 49 50 53 54 41 52 54 3D 54 43 50 2C 31 39 32 2E 31 36 38 2E 30 2E 31 30 37 2C 35 30 32 0D 0A
+0
+5
+
+SEND
+63
+         - Start a connection as client (Multiple connection mode)
+41 54 2B 43 49 50 53 54 41 52 54 3D 69 64 2C 74 79 70 65 2C 61 64 64 72 2C 70 6F 72 74
+0
+5
+
+SEND
+64
+
+41 54 2B 43 49 50 53 54 41 52 54 3D 30 2C 54 43 50 2C 31 39 32 2E 31 36 38 2E 30 2E 31 30 37 2C 35 30 32 0D 0A
+0
+5
+
+SEND
+65
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+0
+5
+
+SEND
+66
+>CLIENT & HOST
+
+0
+5
+
+SEND
+67
+  - Query current multiplex mode
+41 54 2B 43 49 50 4D 55 58 3F 0D 0A
+0
+5
+
+SEND
+68
+  - Disable multiplex mode (0: Single connection)
+41 54 2B 43 49 50 4D 55 58 3D 30 0D 0A
+0
+5
+
+SEND
+69
+  - Enable multiplex mode (1: Multiple connections, max 4)
+41 54 2B 43 49 50 4D 55 58 3D 31 0D 0A
+0
+5
+
+SEND
+70
+  - Create or Delete connection {AT+CIPSERVER=mode[,port]}
+
+0
+5
+
+SEND
+71
+      Parameters:
+
+0
+5
+
+SEND
+72
+       mode: 0-1 (0: Delete server; 1: Create server)
+
+0
+5
+
+SEND
+73
+       port:
+
+0
+5
+
+SEND
+74
+          -  Create server
+41 54 2B 43 49 50 53 45 52 56 45 52 3D 31 2C 35 30 32 0D 0A
+0
+5
+
+SEND
+75
+          -  Delete server
+41 54 2B 43 49 50 53 45 52 56 45 52 3D 30 2C 35 30 32 0D 0A
+0
+5
+
+SEND
+76
+.
+
+0
+5
+
+SEND
+77
+  - Set length of the data that will be sent. For normal send (single connection) {AT+CIPSEND=length}
+41 54 2B 43 49 50 53 45 4E 44 3D 33 0D 0A
+0
+5
+
+SEND
+78
+  - Set length of the data that will be sent. For normal send (multiple connection)  {AT+CIPSEND=id,length}
+41 54 2B 43 49 50 53 45 4E 44 3D 30 2C 33 0D 0A
+0
+5
+
+SEND
+79
+  - Send 3 characters (example)
+31 32 33
+0
+5
+
+SEND
+80
+.
+
+0
+5
+
+SEND
+81
+  - Close TCP or UDP connection, for single connection mode {AT+CIPCLOSE}
+41 54 2B 43 49 50 43 4C 4F 53 45 0D 0A
+0
+5
+
+SEND
+82
+  - Close TCP or UDP connection, for multiply connection mode {AT+CIPCLOSE=id}
+41 54 2B 43 49 50 43 4C 4F 53 45 3D 30 0D 0A
+0
+5
+
+SEND
+83
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+0
+5
+
+SEND
+84
+> HOST (mode: softAP)
+
+0
+5
+
+SEND
+85
+  - List information on of connected clients
+41 54 2B 43 57 4C 49 46 0D 0A
+0
+5
+
+SEND
+86
+  - Query configuration of ESP8266 softAP mode
+41 54 2B 43 57 53 41 50 3F 0D 0A
+0
+5
+
+SEND
+87
+  - Set ip addr of ESP8266 softAP {AT+CIPAP=ip}
+41 54 2B 43 49 50 41 50 3D 31 39 32 2E 31 36 38 2E 31 2E 31 31 30 0D 0A
+0
+5
+
+SEND
+88
+.
+
+0
+5
+
+SEND
+89
+  - Set configuration of softAP mode {AT+CWSAP=ssid,pwd,ch,ecn}
+
+0
+5
+
+SEND
+90
+      Parameters:
+
+0
+5
+
+SEND
+91
+       ssid: String, ESP8266’s softAP SSID
+
+0
+5
+
+SEND
+92
+       pwd: String, Password, no longer than 64 characters
+
+0
+5
+
+SEND
+93
+       ch: channel id
+
+0
+5
+
+SEND
+94
+       ecn: 0-4 (0: OPEN; 1: WPA_PSK; 2: WPA2_PSK; 4: WPA_WPA2_PSK)
+
+0
+5
+
+SEND
+95
+
+41 54 2B 43 57 53 41 50 3D 22 54 45 53 54 22 2C 22 31 32 33 22 2C 22 31 22 2C 22 30 22 0D 0A
+0
+5
+
+SEND
+96
+.
+
+0
+5
+
+SEND
+97
+  - Query server timeout {AT+CIPSTO?}
+41 54 2B 43 49 50 53 54 4F 3F 0D 0A
+0
+5
+
+SEND
+98
+  - Set server timeout (5s) {AT+CIPSTO=time}
+41 54 2B 43 49 50 53 54 4F 3D 35 0D 0A
+0
+5
+
+SEND
+99
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+0
+5
+
